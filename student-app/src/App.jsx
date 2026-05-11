@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import CreateStudentPage from "./components/CreateStudentPage";
 import EditStudentPage from "./components/EditStudentPage";
 import AiChatPage from "./components/AiChatPage";
+
 export default function App() {
   return (
     <div className="sma-app">
@@ -44,20 +45,8 @@ export default function App() {
               </>
             </ProtectedRoute>
           }
-        >
-          {/* child route — renders at /students/ai */}
-          <Route
-            path="/ai"
-            element={
-              <ProtectedRoute>
-                <AiChatPage />
-              </ProtectedRoute>
-            }
-          />
-        </Route>
+        />
 
-        {/* IMPORTANT: /students/new must come BEFORE /students/:id/edit
-            otherwise 'new' would be matched as the :id parameter */}
         <Route
           path="/students/new"
           element={
@@ -76,16 +65,18 @@ export default function App() {
           }
         />
 
+        {/* ✅ AI route at top level */}
+        <Route
+          path="/ai"
+          element={
+            <ProtectedRoute>
+              <AiChatPage />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
   );
 }
-
-// Complete route table for the app:
-// GET /           → LandingPage       (public)
-// GET /login      → LoginForm         (public)
-// GET /register   → RegisterForm      (public)
-// GET /students   → StudentList       (protected)
-// GET /students/new       → CreateStudentPage (protected)
-// GET /students/:id/edit  → EditStudentPage   (protected)
