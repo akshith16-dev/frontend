@@ -8,7 +8,7 @@ import Header from "./components/Header";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CreateStudentPage from "./components/CreateStudentPage";
 import EditStudentPage from "./components/EditStudentPage";
-
+import AiChatPage from "./components/AiChatPage";
 export default function App() {
   return (
     <div className="sma-app">
