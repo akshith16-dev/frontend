@@ -47,7 +47,7 @@ export default function App() {
         >
           {/* child route — renders at /students/ai */}
           <Route
-            path="/students/ai"
+            path="/ai"
             element={
               <ProtectedRoute>
                 <AiChatPage />
